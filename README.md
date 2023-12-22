@@ -19,3 +19,35 @@ To run Emoji Art on your local machine, follow these steps:
    ```bash
    git clone https://github.com/shaik/emojiArt.git
    cd emojiArt
+
+2. **Set Up a Virtual Environment (Optional but Recommended):**
+   
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   pip install -r requirements.txt
+   python emojiArtKD.py
+
+## Usage
+
+- Navigate to `http://localhost:5000`.
+- Upload an image using the provided form.
+- Choose a grid resolution.
+- Submit the form to see the emoji representation of your image.
+
+## Contributing
+
+Contributions to Emoji Art are welcome! Please feel free to submit pull requests, report bugs, and suggest features.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+- Emoji data provided by [EmojiSource](link-to-emoji-source).
+- Flask framework for simplifying web application development.
+
+## Contact
+
+For any queries, you can reach out to [YourName](your-email@example.com).
