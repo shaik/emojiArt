@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji Grid</title>
+    <style>
+        .pixel {
+            width: 10px;
+            height: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    {% for row in emoji_html %}
+        <div>
+            {% for color in row %}
+                <div class="pixel" style="background-color: {{ color }}"></div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>

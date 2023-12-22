@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+input[type="file"],
+input[type="submit"],
+select {
+    margin: 10px;
+}
+
+.emoji-grid {
+    display: grid;
+    grid-gap: 0;
+}
+
+.emoji-row {
+    display: flex;
+}
+
+.emoji-row span {
+    display: inline-block;
+    min-width: 10px;
+    height: 10px;
+    text-align: center;
+    font-size: 6pt;
+    vertical-align: middle;
+}

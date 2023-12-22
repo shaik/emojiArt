@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji Canvas</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <canvas id="emojiCanvas" width="32" height="32" style="display: inline;"></canvas>
+    <table id="emojiTable">
+        <tr>
+            <th>Emoji</th>
+            <th>ASCII Code</th>
+            <th>Average Color</th>
+            <th>Hex Color</th>
+        </tr>
+    </table>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('emojiCanvas');
+            const ctx = canvas.getContext('2d');
+            const emojis = "{{ emojis }}";
+            //const emojis = "⏱⏲️⏲⏸⏸⬛⬛⏹⏹⏺️⏺️▪▫▫▶";
+
+            for (const emoji of emojis) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.font = '32px serif';
+                ctx.fillText(emoji, 0, 32);
+
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const avgColor = calculateAverageColor(imageData.data);
+                const hexColor = rgbToHex(avgColor);
+                addRowToTable(emoji, avgColor, hexColor);
+            }
+
+            function calculateAverageColor(data) {
+                let totalR = 0, totalG = 0, totalB = 0, count = 0;
+                let isMonochromatic = true;
+
+                for (let i = 0; i < data.length; i += 4) {
+                    if (data[i] !== 0 || data[i + 1] !== 0 || data[i + 2] !== 0) {
+                        isMonochromatic = false;
+                    }
+
+                    if (data[i + 3] === 0) { // Completely transparent pixel
+                        totalR += 255;
+                        totalG += 255;
+                        totalB += 255;
+                        count++;
+                    } else if (data[i + 3] > 0) { // Non-transparent pixel
+                        totalR += isMonochromatic ? (255 - data[i + 3]) : data[i];
+                        totalG += isMonochromatic ? (255 - data[i + 3]) : data[i + 1];
+                        totalB += isMonochromatic ? (255 - data[i + 3]) : data[i + 2];
+                        count++;
+                    }
+                }
+
+                return count > 0 ? `rgb(${Math.round(totalR / count)}, ${Math.round(totalG / count)}, ${Math.round(totalB / count)})` : 'rgb(255, 255, 255)';
+            }
+
+
+
+            function rgbToHex(rgb) {
+                const [r, g, b] = rgb.match(/\d+/g).map(x => parseInt(x).toString(16).padStart(2, '0'));
+                return `#${r}${g}${b}`;
+            }
+
+            function addRowToTable(emoji, color, hexColor) {
+                const table = document.getElementById('emojiTable');
+                const row = table.insertRow();
+                const cellEmoji = row.insertCell(0);
+                const cellAscii = row.insertCell(1);
+                const cellColor = row.insertCell(2);
+                const cellHex = row.insertCell(3);
+                cellEmoji.textContent = emoji;
+                cellAscii.textContent = emoji.codePointAt(0);
+                cellColor.style.backgroundColor = color;
+                cellHex.textContent = hexColor;
+            }
+        });
+    </script>
+</body>
+</html>

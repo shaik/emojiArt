@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#emojiTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#emojiTable, #emojiTable th, #emojiTable td {
+    border: 1px solid black;
+}
+
+#emojiTable th, #emojiTable td {
+    padding: 8px;
+    text-align: left;
+}
+
+/* More styles can be added as needed */

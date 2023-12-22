@@ -1,0 +1,40 @@
+
+Create a Flask web application named "Emoji Average Color" that reads emojis from a CSV file and calculates their average color. The application includes a Python backend to handle file reading and a frontend with HTML, JavaScript, and CSS. The JavaScript processes each emoji from the CSV, renders it on a canvas, calculates the average color, and displays the results in a table with each emoji, its ASCII code, and the average color (both in RGB and hex format). The CSS file, separate from the HTML, styles the table and page layout. The program handles monochromatic and colored emojis, accounting for transparency in the calculation.
+
+
+
+
+
+Certainly! Here's a detailed prompt you can use to request the creation of a complete "Emoji Art" Flask application in a new session:
+
+I'm looking to develop a Flask web application named "Emoji Art". This application should allow users to upload an image, which will then be processed to create two versions: a pixelated version and an emoji-based version. The pixelated version is a simple downscaled image, while the emoji-based version replaces each pixel with an emoji that closely matches the color of the pixel. Here are the specific requirements and functionalities I need:
+
+Image Upload Feature:
+
+Users should be able to upload an image through the application interface.
+The application should accept common image formats like JPG and PNG.
+Image Processing:
+
+Once an image is uploaded, it should be processed into two versions:
+A pixelated version where the image is downscaled to a specified width (default should be 10 pixels wide, maintaining aspect ratio).
+An emoji-based version where each pixel of the pixelated image is replaced with an emoji. The choice of emoji should be based on the closest matching color.
+Emoji Color Mapping:
+
+Implement a functionality to map emojis to colors. You can use a pre-defined CSV file (emojiColor.csv) that contains emojis with their corresponding hex color codes.
+Displaying the Images:
+
+Display both the pixelated and emoji-based versions of the image on the webpage after processing.
+Configurability:
+
+Allow the width of the pixelated and emoji-based grid to be configurable (default to 10).
+Flask Application Structure:
+
+The application should be structured with emojiArt.py as the main Flask application file.
+Use an HTML template (emojiArt.html) for the frontend, and CSS (emojiArt.css) in a static folder for styling.
+Organize the project with appropriate folders for templates, static files, and data.
+Additional Features:
+
+Ensure the emoji grid is displayed appropriately, with monospace formatting to align emojis and spaces uniformly.
+Handle errors gracefully, such as upload of unsupported file formats or too large images.
+Please provide the complete code for the Flask application, including emojiArt.py, the HTML template, and the CSS file. Also, include instructions on how the emojiColor.csv should be structured and any other setup details necessary for the application to work.
+
